@@ -102,4 +102,65 @@ cd reactavancado-api
 yarn develop
 ```
 
+Strapi admin:
 my password: Strapi123
+
+#### Strapi CKEditor
+
+[Tutorial](https://strapi.io/documentation/v3.x/guides/registering-a-field-in-admin.html#setup)
+
+because of heroku we installed it 2 times, but the default is inside the plugin
+
+```bash
+yarn strapi generate:plugin wysiwyg
+
+yarn add @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
+
+cd plugins/wysiwyg
+yarn add @ckeditor/ckeditor5-react @ckeditor/ckeditor5-build-classic
+```
+
+Create and paste content
+`/plugins/wysiwyg/admin/src/components/MediaLib/index.js`
+
+Create and paste content
+`/plugins/wysiwyg/admin/src/components/Wysiwyg/index.js`
+
+Create and paste content
+`/plugins/wysiwyg/admin/src/components/CKEditor/index.js`
+
+Replace code
+`/plugins/wysiwyg/admin/index.js`
+
+```bash
+yarn build
+```
+
+#### Populate Strapi
+
+- extract dump
+- copy uploads to /public
+- start postgres
+- copy strapi.sql to /
+
+```bash
+psql -h 127.0.0.1 -U strapi -d strapi_db -W < strapi.sql
+```
+
+#### Create dump
+
+[psql](https://www.postgresql.org/docs/current/app-psql.html)
+[pg_dump](https://www.postgresql.org/docs/current/app-pgdump.html)
+
+- -c (clean, to clear tables)
+- --if-exists (clear table if exists)
+- --exclud-table=strapi_administrator (do not send my configs to other ursers)
+- -h (host)
+- -U (user)
+- -d (database)
+- -W (request password)
+- '>' (local data to dump) / '<' (dump to local data)
+
+```bash
+pg_dump -c --if-exists --exclud-table=strapi_administrator -h 127.0.0.1 -U strapi -d strapi_db -W > strapi.sql
+```
