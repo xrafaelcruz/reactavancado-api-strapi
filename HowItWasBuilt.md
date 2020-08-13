@@ -173,6 +173,8 @@ static files:
 [cloudinary](https://cloudinary.com/)
 
 Strapi Provider
+_send all static files to cloudinary_
+_example: when upload a image_
 
 ```bash
 yarn add strapi-provider-upload-cloudinary
@@ -182,7 +184,17 @@ create file: `/config/env/production/plugins.js`
 paste configs from strapi-provider-upload-cloudinary
 
 ```bash
+git commit -am"provider cloudinary"
+git push heroku master
+```
+
+```bash
 heroku config:set CLOUDINARY_NAME=my_value
 heroku config:set CLOUDINARY_KEY=my_value
 heroku config:set CLOUDINARY_SECRET=my_value
 ```
+
+Webhook
+
+- create file `/config/env/production/custom.js` and past content
+- edit file `/api/landing-page/models/landing-page.js` and past content
