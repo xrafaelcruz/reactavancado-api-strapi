@@ -164,3 +164,25 @@ psql -h 127.0.0.1 -U strapi -d strapi_db -W < strapi.sql
 ```bash
 pg_dump -c --if-exists --exclud-table=strapi_administrator -h 127.0.0.1 -U strapi -d strapi_db -W > strapi.sql
 ```
+
+#### Deploy
+
+[heroku](https://devcenter.heroku.com/articles/heroku-postgres-import-export)
+
+static files:
+[cloudinary](https://cloudinary.com/)
+
+Strapi Provider
+
+```bash
+yarn add strapi-provider-upload-cloudinary
+```
+
+create file: `/config/env/production/plugins.js`
+paste configs from strapi-provider-upload-cloudinary
+
+```bash
+heroku config:set CLOUDINARY_NAME=my_value
+heroku config:set CLOUDINARY_KEY=my_value
+heroku config:set CLOUDINARY_SECRET=my_value
+```
