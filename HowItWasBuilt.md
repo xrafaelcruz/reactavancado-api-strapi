@@ -167,7 +167,10 @@ pg_dump -c --if-exists --exclud-table=strapi_administrator -h 127.0.0.1 -U strap
 
 #### Deploy
 
-[heroku](https://devcenter.heroku.com/articles/heroku-postgres-import-export)
+[heroku](https://strapi.io/documentation/v3.x/deployment/heroku.html)
+
+Dump
+[heroku-postgres-import-export](https://devcenter.heroku.com/articles/heroku-postgres-import-export)
 
 static files:
 [cloudinary](https://cloudinary.com/)
